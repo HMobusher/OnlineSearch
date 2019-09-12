@@ -18,7 +18,7 @@ public class Medicine {
 	@Column(name = "Name")
 	private String name;
 
-	// Prescribed or Over the counter
+	// Prescribed or Over the counter as P or OTC
 	@Column(name = "Type")
 	private String type;
 

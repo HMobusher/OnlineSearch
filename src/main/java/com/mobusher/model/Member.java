@@ -20,23 +20,18 @@ public class Member {
 	private int id;
 
 	@Column(name = "Username")
-	// @NotNull(message="Username cannot be null!!")
 	private String username;
 
 	@Column(name = "Password")
-	// @NotNull(message="Password cannot be null!!")
 	private String password;
 
 	@Column(name = "Firstname")
-	// @NotNull(message="First name cannot be null!!")
 	private String fname;
 
 	@Column(name = "Lastname")
-	// @NotNull(message="Last name cannot be null!!")
 	private String lname;
 
 	@Column(name = "Phoneno")
-	// @NotNull(message="Phone Number cannot be null!!")
 	private long phoneno;
 
 	@Column(name = "Email")
@@ -45,7 +40,6 @@ public class Member {
 
 	// MedicalMember or BloodBankMember
 	@Column(name = "Type")
-	// @NotNull(message="Member type cannot be null!!")
 	// @Size(max=2, message = "Member type should be either MM or BB")
 	private String type;
 
@@ -125,22 +119,6 @@ public class Member {
 		this.workat = workat;
 	}
 
-	public Member() {
-		super();
-	}
-
-	public Member(int id, @NotNull(message = "Username cannot be null!!") String username, String password, String fname,
-			String lname, long phoneno, String email, String type, String workat, String updateinventory) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.fname = fname;
-		this.lname = lname;
-		this.phoneno = phoneno;
-		this.email = email;
-		this.type = type;
-		this.workat = workat;
-	}
+	
 
 }
