@@ -1,9 +1,12 @@
 package com.mobusher.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -13,14 +16,14 @@ public class Store {
 	@Id
 	@GeneratedValue
 	@Column(name = "Id")
-	private int storeid;
+	private int id;
 
 	@Column(name = "Name")
 	private String storename;
 
-	// Uses the Address table to get the full address
-	@Column(name = "Address")
-	private String address;
+//	// Uses the Address table to get the full address
+//	@Column(name = "Address")
+//	private String address;
 
 	// Either Medical or Blood Bank
 	@Column(name = "Type")
@@ -38,13 +41,36 @@ public class Store {
 	// Medicine Delivery
 	@Column(name = "Delivery")
 	private String storedelivery;
-
-	public int getStoreid() {
-		return storeid;
+	
+	@OneToOne(mappedBy="store", cascade=CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Address address;
+	
+	public Store() {
 	}
 
-	public void setStoreid(int storeid) {
-		this.storeid = storeid;
+	public Store(String storename, String type, String salestype, String storeopen24, String storedelivery) {
+		this.storename = storename;
+		this.type = type;
+		this.salestype = salestype;
+		this.storeopen24 = storeopen24;
+		this.storedelivery = storedelivery;
+	}
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getStorename() {
@@ -53,14 +79,6 @@ public class Store {
 
 	public void setStorename(String storename) {
 		this.storename = storename;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	public String getType() {

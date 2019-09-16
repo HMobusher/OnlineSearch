@@ -13,7 +13,7 @@ public class BloodBank {
 	@Id
 	@GeneratedValue
 	@Column(name = "Id")
-	private int bbid;
+	private int id;
 	
 	//Positive: O, A, B, AB | Negative: O, A, B, AB 
 	@Column(name = "Bloodtype")
@@ -27,11 +27,11 @@ public class BloodBank {
 	private int units;
 
 	public int getId() {
-		return bbid;
+		return id;
 	}
 
 	public void setId(int id) {
-		this.bbid = id;
+		this.id = id;
 	}
 
 	public String getType() {

@@ -20,8 +20,8 @@ public class AdminService {
 		return (List<Admin>)adminRepo.findAll();
 	}
 
-	public Optional<Admin> getAdminById(int adminid) {
-		return adminRepo.findById(adminid);
+	public Optional<Admin> getAdminById(int id) {
+		return adminRepo.findById(id);
 	}
 
 	public void addAdmin(Admin admin) {

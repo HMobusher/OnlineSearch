@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mobusher.model.Member;
-import com.mobusher.service.UserService;
+import com.mobusher.service.MemberService;
 
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping(path="/api")
-public class UserController {
+public class MemberController {
 
 	@Autowired
-	UserService userService;
+	MemberService userService;
 	
 	@GetMapping("/getAllUsers")
 	public List<Member> getAllUsers(){

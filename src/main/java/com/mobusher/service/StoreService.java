@@ -20,16 +20,16 @@ public class StoreService {
 		return (List<Store>)storeRepo.findAll();
 	}
 
-	public Optional<Store> getStoreById(int storeid) {
-		return storeRepo.findById(storeid);
+	public Optional<Store> getStoreById(int id) {
+		return storeRepo.findById(id);
 	}
 
 	public void addStore(Store store) {
 		storeRepo.save(store);
 	}
 
-	public void deleteStoreById(int storeid) {
-		storeRepo.deleteById(storeid);
+	public void deleteStoreById(int id) {
+		storeRepo.deleteById(id);
 	}
 	public void updateStore(Store store) {
 		storeRepo.save(store);

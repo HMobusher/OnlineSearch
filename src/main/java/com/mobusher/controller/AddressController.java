@@ -36,18 +36,18 @@ public class AddressController {
 	}
 	
 	@GetMapping("/getAddress/{addid}")
-	public Optional<Address> getAddressById(@PathVariable int addid) {
-		return addService.getAddressById(addid);
+	public Optional<Address> getAddressById(@PathVariable int id) {
+		return addService.getAddressById(id);
 	}
 	
 	@DeleteMapping("/deleteAddress/{addid}")
-	public void deleteAddressById(@PathVariable int addid){
-		addService.deleteAddressById(addid);
+	public void deleteAddressById(@PathVariable int id){
+		addService.deleteAddressById(id);
 	}
 	
 	@PutMapping("/updateAddress/{addid}")
-	public void updateAddress(@RequestBody Address add ,@PathVariable int addid) {
-		add.setAddid(addid); 
+	public void updateAddress(@RequestBody Address add ,@PathVariable int id) {
+		add.setId(id); 
 		addService.updateAddress(add);
 	}
 }

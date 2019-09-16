@@ -3,6 +3,8 @@ package com.mobusher.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 //POJO
 @Entity
@@ -11,7 +13,7 @@ public class Address {
 
 	@Id
 	@Column(name = "Id")
-	private int addid;
+	private int id;
 
 	// Store/BloodBank name
 	@Column(name = "Name")
@@ -34,13 +36,36 @@ public class Address {
 	@Column(name = "Country")
 	private String country;
 
-	//Getters & Setters
-	//Id
-	public int getAddid() {
-		return addid;
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private Store store;
+	
+	public Address() {	
 	}
-	public void setAddid(int addid) {
-		this.addid = addid;
+	
+	public Address(String name, String street, String city, String state, String zipcode, String country) {
+		this.name = name;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zipcode = zipcode;
+		this.country = country;
+	}
+	//Getters and Setters
+	
+	//Store One to One
+	public Store getStore() {
+		return store;
+	}
+	public void setStore(Store store) {
+		this.store = store;
+	}
+	//Id
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	//Name

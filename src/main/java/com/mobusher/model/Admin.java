@@ -12,7 +12,7 @@ public class Admin {
 	@Id
 	@GeneratedValue
 	@Column(name = "Id")
-	private int adminid;
+	private int id;
 
 	@Column(name = "Name")
 	private String adminname;
@@ -23,12 +23,12 @@ public class Admin {
 	@Column(name = "Password")
 	private String adminpassword;
 
-	public int getAdminid() {
-		return adminid;
+	public int getId() {
+		return id;
 	}
 
-	public void setAdminid(int adminid) {
-		this.adminid = adminid;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getAdminname() {

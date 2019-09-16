@@ -21,16 +21,16 @@ public class MedicineService {
 		return (List<Medicine>)medRepo.findAll();
 	}
 
-	public Optional<Medicine> getMedById(int mid) {
-		return medRepo.findById(mid);
+	public Optional<Medicine> getMedById(int id) {
+		return medRepo.findById(id);
 	}
 
 	public void addMed(Medicine med) {
 		medRepo.save(med);
 	}
 
-	public void deleteMedById(int mid) {
-		medRepo.deleteById(mid);
+	public void deleteMedById(int id) {
+		medRepo.deleteById(id);
 	}
 	public void updateMed(Medicine med) {
 		medRepo.save(med);

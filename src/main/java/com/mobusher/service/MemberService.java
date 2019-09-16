@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 
 
 
-import com.mobusher.dao.UserRepo;
+import com.mobusher.dao.MemberRepo;
 import com.mobusher.model.Member;
 
 @Service
-public class UserService {
+public class MemberService {
 
 	@Autowired
-	UserRepo userRepo;
+	MemberRepo userRepo;
 
 	public List<Member> retrieveAllUsers() {
 		userRepo.findAll().forEach(System.out::println);

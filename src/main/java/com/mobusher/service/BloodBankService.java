@@ -21,16 +21,16 @@ public class BloodBankService {
 		return (List<BloodBank>)bbRepo.findAll();
 	}
 
-	public Optional<BloodBank> getBBById(int bbid) {
-		return bbRepo.findById(bbid);
+	public Optional<BloodBank> getBBById(int id) {
+		return bbRepo.findById(id);
 	}
 
 	public void addBB(BloodBank bb) {
 		bbRepo.save(bb);
 	}
 
-	public void deleteBBById(int bbid) {
-		bbRepo.deleteById(bbid);
+	public void deleteBBById(int id) {
+		bbRepo.deleteById(id);
 	}
 	public void updateBB(BloodBank bb) {
 		bbRepo.save(bb);

@@ -46,6 +46,9 @@ public class Member {
 	// Name of the store which you get from the Store Table
 	@Column(name = "Workat")
 	private String workat;
+	
+	
+	
 
 	public int getId() {
 		return id;

@@ -36,19 +36,19 @@ public class AdminController {
 		adminService.addAdmin(admin);
 	}
 	
-	@GetMapping("/getAdmin/{adminid}")
-	public Optional<Admin> getAdminById(@PathVariable int adminid) {
-		return adminService.getAdminById(adminid);
+	@GetMapping("/getAdmin/{id}")
+	public Optional<Admin> getAdminById(@PathVariable int id) {
+		return adminService.getAdminById(id);
 	}
 	
-	@DeleteMapping("/deleteAdmin/{adminid}")
-	public void deleteAdminById(@PathVariable int adminid){
-		adminService.deleteAdminById(adminid);
+	@DeleteMapping("/deleteAdmin/{id}")
+	public void deleteAdminById(@PathVariable int id){
+		adminService.deleteAdminById(id);
 	}
 	
-	@PutMapping("/updateAdmin/{adminid}")
-	public void updateAdmin(@RequestBody Admin admin ,@PathVariable int adminid) {
-		admin.setAdminid(adminid); 
+	@PutMapping("/updateAdmin/{id}")
+	public void updateAdmin(@RequestBody Admin admin ,@PathVariable int id) {
+		admin.setId(id); 
 		adminService.updateAdmin(admin);
 	}
 

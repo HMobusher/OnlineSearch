@@ -7,7 +7,7 @@ import com.mobusher.model.Member;
 
 
 @Repository
-public interface UserRepo extends CrudRepository<Member,  Integer> {
+public interface MemberRepo extends CrudRepository<Member,  Integer> {
 	Member findByUsername(String username);
 
 }

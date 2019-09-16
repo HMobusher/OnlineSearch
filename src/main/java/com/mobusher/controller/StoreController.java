@@ -37,18 +37,18 @@ public class StoreController {
 	}
 	
 	@GetMapping("/getStore/{storeid}")
-	public Optional<Store> getStoreById(@PathVariable int storeid) {
-		return storeService.getStoreById(storeid);
+	public Optional<Store> getStoreById(@PathVariable int id) {
+		return storeService.getStoreById(id);
 	}
 	
-	@DeleteMapping("/deleteStore/{storeid}")
-	public void deleteStoreById(@PathVariable int storeid){
-		storeService.deleteStoreById(storeid);
+	@DeleteMapping("/deleteStore/{id}")
+	public void deleteStoreById(@PathVariable int id){
+		storeService.deleteStoreById(id);
 	}
 	
-	@PutMapping("/updateStore/{storeid}")
-	public void updateStore(@RequestBody Store store ,@PathVariable int storeid) {
-		store.setStoreid(storeid); 
+	@PutMapping("/updateStore/{id}")
+	public void updateStore(@RequestBody Store store ,@PathVariable int id) {
+		store.setId(id); 
 		storeService.updateStore(store);
 	}
 	

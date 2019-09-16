@@ -20,16 +20,16 @@ public class AddressService {
 		return (List<Address>)addressRepo.findAll();
 	}
 
-	public Optional<Address> getAddressById(int addid) {
-		return addressRepo.findById(addid);
+	public Optional<Address> getAddressById(int id) {
+		return addressRepo.findById(id);
 	}
 
 	public void addAddress(Address add) {
 		addressRepo.save(add);
 	}
 
-	public void deleteAddressById(int addid) {
-		addressRepo.deleteById(addid);
+	public void deleteAddressById(int id) {
+		addressRepo.deleteById(id);
 	}
 	public void updateAddress(Address add) {
 		addressRepo.save(add);
