@@ -35,17 +35,21 @@ public class MedicineController {
 		medService.addMed(med);
 	}
 	
-	@GetMapping("/getMed{id}")
+	@GetMapping("/getMedId/{id}")
 	public Optional<Medicine> getMedById(@PathVariable int id) {
 		return medService.getMedById(id);
 	}
+	@GetMapping("/getMedName/{name}")
+	public Optional<Medicine> getMedByName(@PathVariable String name){
+		return medService.getMedByName(name);
+	}
 	
-	@DeleteMapping("/deleteMed/{mid}")
+	@DeleteMapping("/deleteMed/{id}")
 	public void deleteMedById(@PathVariable int id){
 		medService.deleteMedById(id);
 	}
 	
-	@PutMapping("/updateMed/{mid}")
+	@PutMapping("/updateMed/{id}")
 	public void updateMed(@RequestBody Medicine med ,@PathVariable int id) {
 		med.setId(id); 
 		medService.updateMed(med);

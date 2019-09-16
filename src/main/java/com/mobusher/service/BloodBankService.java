@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mobusher.dao.BloodBankRepo;
 import com.mobusher.model.BloodBank;
+import com.mobusher.model.Medicine;
 
 
 @Service
@@ -24,11 +25,15 @@ public class BloodBankService {
 	public Optional<BloodBank> getBBById(int id) {
 		return bbRepo.findById(id);
 	}
+	
+	public Optional<BloodBank> getBBByType(String type){
+		return bbRepo.findByType(type);
+	}
 
 	public void addBB(BloodBank bb) {
 		bbRepo.save(bb);
 	}
-
+	
 	public void deleteBBById(int id) {
 		bbRepo.deleteById(id);
 	}

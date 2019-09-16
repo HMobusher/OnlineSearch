@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mobusher.dao.StoreRepo;
+import com.mobusher.model.Medicine;
 import com.mobusher.model.Store;
 
 @Service
@@ -23,6 +24,9 @@ public class StoreService {
 	public Optional<Store> getStoreById(int id) {
 		return storeRepo.findById(id);
 	}
+	public Optional<Store> getStoreByName(String storename){
+		return storeRepo.findByName(storename);
+	}
 
 	public void addStore(Store store) {
 		storeRepo.save(store);
@@ -34,4 +38,5 @@ public class StoreService {
 	public void updateStore(Store store) {
 		storeRepo.save(store);
 	}
+
 }

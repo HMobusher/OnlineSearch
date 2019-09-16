@@ -36,9 +36,13 @@ public class StoreController {
 		storeService.addStore(store);
 	}
 	
-	@GetMapping("/getStore/{storeid}")
+	@GetMapping("/getStoreId/{id}")
 	public Optional<Store> getStoreById(@PathVariable int id) {
 		return storeService.getStoreById(id);
+	}
+	@GetMapping("/getStoreName/{storename}")
+	public Optional<Store> getStoreByName(@PathVariable String storename) {
+		return storeService.getStoreByName(storename);
 	}
 	
 	@DeleteMapping("/deleteStore/{id}")

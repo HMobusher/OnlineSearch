@@ -24,7 +24,9 @@ public class MedicineService {
 	public Optional<Medicine> getMedById(int id) {
 		return medRepo.findById(id);
 	}
-
+	public Optional<Medicine> getMedByName(String name){
+		return medRepo.findByName(name);
+	}
 	public void addMed(Medicine med) {
 		medRepo.save(med);
 	}

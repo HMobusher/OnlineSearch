@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mobusher.model.BloodBank;
+import com.mobusher.model.Medicine;
 import com.mobusher.service.BloodBankService;
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -35,9 +36,13 @@ public class BloodBankController {
 		bbService.addBB(bb);
 	}
 	
-	@GetMapping("/getBB/{id}")
+	@GetMapping("/getBBId/{id}")
 	public Optional<BloodBank> getBBById(@PathVariable int id) {
 		return bbService.getBBById(id);
+	}
+	@GetMapping("/getBBType/{type}")
+	public Optional<BloodBank> getBBByType(@PathVariable String type){
+		return bbService.getBBByType(type);
 	}
 	
 	@DeleteMapping("/deleteBB/{id}")
