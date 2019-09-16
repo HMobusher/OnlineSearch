@@ -13,24 +13,24 @@ public class Medicine {
 	@Id
 	@GeneratedValue
 	@Column(name = "Id")
-	private int mid;
+	private int id;
 
 	@Column(name = "Name")
 	private String name;
 
-	// Prescribed or Over the counter as P or OTC
+	// Prescribed or Over the counter as PR or OTC
 	@Column(name = "Type")
 	private String type;
 
 	@Column(name = "Amount")
 	private int amount;
 
-	public int getmId() {
-		return mid;
+	public int getId() {
+		return id;
 	}
 
-	public void setmId(int mId) {
-		this.mid = mId;
+	public void setId(int mId) {
+		this.id = mId;
 	}
 
 	public String getName() {

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mobusher.model.Medicine;
 import com.mobusher.service.MedicineService;
 
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
-@RequestMapping(path="/")
+@RequestMapping(path="/api")
 public class MedicineController {
 
 	@Autowired
@@ -45,7 +47,7 @@ public class MedicineController {
 	
 	@PutMapping("/updateMed/{mid}")
 	public void updateMed(@RequestBody Medicine med ,@PathVariable int mid) {
-		med.setmId(mid); 
+		med.setId(mid); 
 		medService.updateMed(med);
 	}
 }
