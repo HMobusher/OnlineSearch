@@ -21,10 +21,6 @@ public class Store {
 	@Column(name = "Name")
 	private String storename;
 
-//	// Uses the Address table to get the full address
-//	@Column(name = "Address")
-//	private String address;
-
 	// Either Medical or Blood Bank
 	@Column(name = "Type")
 	private String type;
