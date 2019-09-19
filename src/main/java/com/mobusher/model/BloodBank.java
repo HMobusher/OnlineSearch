@@ -1,19 +1,23 @@
 package com.mobusher.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "BloodBank")
+@Table(name = "Bloodbank")
 public class BloodBank {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "Id")
-	private int id;
+	@Column(name = "bId")
+	private Integer id;
 	
 	//Positive: O, A, B, AB | Negative: O, A, B, AB 
 	@Column(name = "Bloodtype")
@@ -24,13 +28,30 @@ public class BloodBank {
 	private String rhtype;
 	
 	@Column(name = "Units")
-	private int units;
+	private Integer units;
+	
+	@ManyToMany(mappedBy = "bloodbanks")
+	private Set<Store> stores = new HashSet<Store>(); 
+	
+	public BloodBank(String type, String rhtype, Integer units) {
+		this.type = type;
+		this.rhtype = rhtype;
+		this.units = units;
+	}
 
-	public int getId() {
+	public Set<Store> getStores() {
+		return stores;
+	}
+
+	public void setStores(Set<Store> stores) {
+		this.stores = stores;
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -50,19 +71,13 @@ public class BloodBank {
 		this.rhtype = rhtype;
 	}
 
-	public int getUnits() {
+	public Integer getUnits() {
 		return units;
 	}
 
-	public void setUnits(int units) {
+	public void setUnits(Integer units) {
 		this.units = units;
 	}
-	
 
-
-	
-	
-	
-	
 	
 }

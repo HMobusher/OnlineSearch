@@ -21,19 +21,16 @@ public class StoreService {
 		return (List<Store>)storeRepo.findAll();
 	}
 
-	public Optional<Store> getStoreById(int id) {
-		return storeRepo.findById(id);
+	public Optional<Store> getStoreById(Integer mId) {
+		return storeRepo.findById(mId);
 	}
-	public Optional<Store> getStoreByName(String storename){
-		return storeRepo.findByName(storename);
-	}
-
+	
 	public void addStore(Store store) {
 		storeRepo.save(store);
 	}
 
-	public void deleteStoreById(int id) {
-		storeRepo.deleteById(id);
+	public void deleteStoreById(Integer mId) {
+		storeRepo.deleteById(mId);
 	}
 	public void updateStore(Store store) {
 		storeRepo.save(store);

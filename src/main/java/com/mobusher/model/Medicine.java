@@ -1,9 +1,14 @@
 package com.mobusher.model;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,8 +17,8 @@ public class Medicine {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "Id")
-	private int id;
+	@Column(name = "mId")
+	private Integer mId;
 
 	@Column(name = "Name")
 	private String name;
@@ -22,15 +27,37 @@ public class Medicine {
 	@Column(name = "Type")
 	private String type;
 
-	@Column(name = "Amount")
-	private int amount;
-
-	public int getId() {
-		return id;
+	@Column(name = "Stock")
+	private Integer stock;
+	
+	@ManyToMany(mappedBy = "medicines")
+	private Set<Store> stores = new HashSet<Store>(); 
+	
+	
+	public Set<Store> getStores() {
+		return stores;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setStores(Set<Store> stores) {
+		this.stores = stores;
+	}
+
+	
+	public Medicine(String name, String type, Integer stock) {
+		this.name = name;
+		this.type = type;
+		this.stock = stock;
+	}
+
+	public Medicine() {
+	}
+
+	public Integer getmId() {
+		return mId;
+	}
+
+	public void setmId(Integer mId) {
+		this.mId = mId;
 	}
 
 	public String getName() {
@@ -49,13 +76,13 @@ public class Medicine {
 		this.type = type;
 	}
 
-	public int getAmount() {
-		return amount;
+	public Integer getStock() {
+		return stock;
 	}
 
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setStock(Integer stock) {
+		this.stock = stock;
 	}
-
+	
 
 }

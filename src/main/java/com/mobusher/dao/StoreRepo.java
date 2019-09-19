@@ -9,6 +9,6 @@ import com.mobusher.model.Store;
 
 public interface StoreRepo extends CrudRepository<Store, Integer> {
 
-	Optional<Store> findByName(String storename);
+	//Optional<Store> findByName(String storename);
 
 }

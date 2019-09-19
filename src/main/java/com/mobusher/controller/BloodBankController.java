@@ -37,7 +37,7 @@ public class BloodBankController {
 	}
 	
 	@GetMapping("/getBBId/{id}")
-	public Optional<BloodBank> getBBById(@PathVariable int id) {
+	public Optional<BloodBank> getBBById(@PathVariable Integer id) {
 		return bbService.getBBById(id);
 	}
 	@GetMapping("/getBBType/{type}")
@@ -46,12 +46,12 @@ public class BloodBankController {
 	}
 	
 	@DeleteMapping("/deleteBB/{id}")
-	public void deleteBBById(@PathVariable int id){
+	public void deleteBBById(@PathVariable Integer id){
 		bbService.deleteBBById(id);
 	}
 	
 	@PutMapping("/updateBB/{id}")
-	public void updateBB(@RequestBody BloodBank bb ,@PathVariable int id) {
+	public void updateBB(@RequestBody BloodBank bb ,@PathVariable Integer id) {
 		bb.setId(id); 
 		bbService.updateBB(bb);
 	}

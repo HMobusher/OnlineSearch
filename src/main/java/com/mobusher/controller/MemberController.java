@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mobusher.model.Member;
+import com.mobusher.model.Members;
 import com.mobusher.service.MemberService;
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -25,34 +25,30 @@ public class MemberController {
 	@Autowired
 	MemberService userService;
 	
-	@GetMapping("/getAllUsers")
-	public List<Member> getAllUsers(){
-		return userService.retrieveAllUsers();
+	@GetMapping("/getAllMembers")
+	public List<Members> getAllMembers(){
+		return userService.retrieveAllMembers();
 	}
 	
-	@PostMapping("/addUser")
-	public void addUser(@RequestBody Member user) {
-		userService.addUser(user);
+	@PostMapping("/addMember")
+	public void addMember(@RequestBody Members user) {
+		userService.addMember(user);
 	}
 	
-	@GetMapping("/getUser/{id}")
-	public Optional<Member> getUserById(@PathVariable int id) {
-		return userService.getUserById(id);
-	}
-//	@GetMapping("/user/{username}")
-//	public Optional<Member> getUserByUsername(@PathVariable String username) {
-//		return userService.getUserByUsername(username);
-//	}
-	
-	@DeleteMapping("/deleteUser/{id}")
-	public void deleteUserById(@PathVariable int id){
-		userService.deleteUserById(id);
+	@GetMapping("/getMember/{id}")
+	public Optional<Members> getMemberById(@PathVariable Integer id) {
+		return userService.getMemberById(id);
 	}
 	
-	@PutMapping("/updateUser/{id}")
-	public void updateUser(@RequestBody Member user ,@PathVariable int id) {
+	@DeleteMapping("/deleteMember/{id}")
+	public void deleteMemberById(@PathVariable Integer id){
+		userService.deleteMemberById(id);
+	}
+	
+	@PutMapping("/updateMember/{id}")
+	public void updateMember(@RequestBody Members user ,@PathVariable Integer id) {
 		user.setId(id); 
-		userService.updateUser(user);
+		userService.updateMember(user);
 	}
 }
 	

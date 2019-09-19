@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.mobusher.dao.MemberRepo;
-import com.mobusher.model.Member;
+import com.mobusher.model.Members;
 
 @Service
 public class MemberService {
@@ -17,27 +17,24 @@ public class MemberService {
 	@Autowired
 	MemberRepo userRepo;
 
-	public List<Member> retrieveAllUsers() {
+	public List<Members> retrieveAllMembers() {
 		userRepo.findAll().forEach(System.out::println);
-		return (List<Member>)userRepo.findAll();
+		return (List<Members>)userRepo.findAll();
 	}
 
-	public Optional<Member> getUserById(int id) {
+	public Optional<Members> getMemberById(int id) {
 		return userRepo.findById(id);
 	}
-//	public Optional<Member> getUserByUsername(String username){
-//		return userRepo.findByUsername(username);
-//	}
-
-	public void addUser(Member user) {
+	
+	public void addMember(Members user) {
 		userRepo.save(user);
 	}
 
-	public void deleteUserById(int id) {
+	public void deleteMemberById(int id) {
 		userRepo.deleteById(id);
 	}
 	//To update the user
-	public void updateUser(Member user) {
+	public void updateMember(Members user) {
 		userRepo.save(user);
 	}
 	

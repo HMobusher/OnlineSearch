@@ -1,27 +1,30 @@
 package com.mobusher.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-//Table Name
-@Table(name = "User")
-public class Member {
+@Table(name = "Members")
+public class Members {
 
 	// Auto Incremented Primary Key
 	@Id
 	@GeneratedValue
-	@Column(name = "Id")
-	private int id;
+	@Column(name = "id")
+	private Integer id;
 
 	@Column(name = "Username")
 	private String username;
-
+	
 	@Column(name = "Password")
 	private String password;
 
@@ -40,21 +43,33 @@ public class Member {
 
 	// MedicalMember or BloodBankMember
 	@Column(name = "Type")
-	// @Size(max=2, message = "Member type should be either MM or BB")
 	private String type;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+	@JoinColumn(name = "sId", nullable = false)
+	private Store stores;
+	
+	public Members() {
+		
+	}
 
-	// Name of the store which you get from the Store Table
-	@Column(name = "Workat")
-	private String workat;
-	
-	
-	
+	public Members(String username, String password, String fname, String lname, long phoneno, String email,
+			String type) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.fname = fname;
+		this.lname = lname;
+		this.phoneno = phoneno;
+		this.email = email;
+		this.type = type;
+	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -114,13 +129,14 @@ public class Member {
 		this.type = type;
 	}
 
-	public String getWorkat() {
-		return workat;
+	public Store getStores() {
+		return stores;
 	}
 
-	public void setWorkat(String workat) {
-		this.workat = workat;
+	public void setStores(Store stores) {
+		this.stores = stores;
 	}
+
 
 	
 

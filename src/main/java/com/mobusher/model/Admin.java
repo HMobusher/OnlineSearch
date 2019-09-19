@@ -11,8 +11,8 @@ import javax.persistence.Table;
 public class Admin {
 	@Id
 	@GeneratedValue
-	@Column(name = "Id")
-	private int id;
+	@Column(name = "aId")
+	private Integer id;
 
 	@Column(name = "Name")
 	private String adminname;
@@ -23,11 +23,11 @@ public class Admin {
 	@Column(name = "Password")
 	private String adminpassword;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -55,5 +55,13 @@ public class Admin {
 		this.adminpassword = adminpassword;
 	}
 
+	public Admin(String adminname, String adminusername, String adminpassword) {
+		super();
+		this.adminname = adminname;
+		this.adminusername = adminusername;
+		this.adminpassword = adminpassword;
+	}
+
+	
 	
 }

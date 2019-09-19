@@ -37,17 +37,17 @@ public class AdminController {
 	}
 	
 	@GetMapping("/getAdmin/{id}")
-	public Optional<Admin> getAdminById(@PathVariable int id) {
+	public Optional<Admin> getAdminById(@PathVariable Integer id) {
 		return adminService.getAdminById(id);
 	}
 	
 	@DeleteMapping("/deleteAdmin/{id}")
-	public void deleteAdminById(@PathVariable int id){
+	public void deleteAdminById(@PathVariable Integer id){
 		adminService.deleteAdminById(id);
 	}
 	
 	@PutMapping("/updateAdmin/{id}")
-	public void updateAdmin(@RequestBody Admin admin ,@PathVariable int id) {
+	public void updateAdmin(@RequestBody Admin admin ,@PathVariable Integer id) {
 		admin.setId(id); 
 		adminService.updateAdmin(admin);
 	}
