@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mobusher.dao.StoreRepo;
 import com.mobusher.model.Medicine;
 import com.mobusher.model.Store;
+import com.mobusher.repo.StoreRepo;
 
 @Service
 public class StoreService {

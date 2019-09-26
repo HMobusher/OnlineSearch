@@ -1,30 +1,48 @@
 package com.mobusher.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.NaturalId;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name = "Members")
+@Table(name = "Members", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "username"
+            }),
+            @UniqueConstraint(columnNames = {
+                "email"
+            })
+    })
 public class Members {
 
-	// Auto Incremented Primary Key
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Integer id;
+	private Long id;
 
 	@Column(name = "Username")
 	private String username;
-	
+
 	@Column(name = "Password")
 	private String password;
 
@@ -35,27 +53,45 @@ public class Members {
 	private String lname;
 
 	@Column(name = "Phoneno")
-	private long phoneno;
+	private Long phoneno;
 
 	@Column(name = "Email")
-	// @NotNull(message="Email cannot be null!!")
+	@Email @NaturalId
 	private String email;
 
-	// MedicalMember or BloodBankMember
+	// MM or BB or ADMIN
 	@Column(name = "Type")
 	private String type;
+
+	@Column(name = "Store")
+	private String store;
+
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-	@JoinColumn(name = "sId", nullable = false)
-	private Store stores;
-	
-	public Members() {
-		
+
+	// @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional =
+	// false)
+//	@JoinColumn(name = "sId", nullable = true)
+//	//@JsonBackReference
+//	@JsonIgnore
+//	private Store stores;
+//	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "member_roles", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "rId"))
+	private Set<Role> roles = new HashSet<>();
+
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public Members(String username, String password, String fname, String lname, long phoneno, String email,
-			String type) {
-		super();
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	} 
+
+	public Members() {
+	}
+
+	public Members(String username,  String fname, String lname, Long phoneno, @Email String email,
+			String type, String store, String password) {
 		this.username = username;
 		this.password = password;
 		this.fname = fname;
@@ -63,13 +99,14 @@ public class Members {
 		this.phoneno = phoneno;
 		this.email = email;
 		this.type = type;
+		this.store = store;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -105,11 +142,11 @@ public class Members {
 		this.lname = lname;
 	}
 
-	public long getPhoneno() {
+	public Long getPhoneno() {
 		return phoneno;
 	}
 
-	public void setPhoneno(long phoneno) {
+	public void setPhoneno(Long phoneno) {
 		this.phoneno = phoneno;
 	}
 
@@ -128,16 +165,20 @@ public class Members {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	public Store getStores() {
-		return stores;
+	public String getStore() {
+		return store;
 	}
 
-	public void setStores(Store stores) {
-		this.stores = stores;
+	public void setStore(String store) {
+		this.store = store;
 	}
 
-
-	
+//	public Store getStores() {
+//		return stores;
+//	}
+//
+//	public void setStores(Store stores) {
+//		this.stores = stores;
+//	}
 
 }

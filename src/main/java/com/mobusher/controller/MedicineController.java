@@ -29,7 +29,7 @@ public class MedicineController {
 	public List<Medicine> getAllMeds(){
 		return medService.retrieveAllMeds();
 	}
-	
+
 	@PostMapping("/addMed")
 	public void addMed(@RequestBody Medicine med) {
 		medService.addMed(med);
@@ -54,4 +54,10 @@ public class MedicineController {
 		med.setmId(mId); 
 		medService.updateMed(med);
 	}
+	@PutMapping("/updateMed")
+	public Medicine update(@RequestBody Medicine med) {
+		medService.updateMed(med);
+		return med;
+	}
+	
 }

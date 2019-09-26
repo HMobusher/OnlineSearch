@@ -30,23 +30,35 @@ public class Medicine {
 	@Column(name = "Stock")
 	private Integer stock;
 	
-	@ManyToMany(mappedBy = "medicines")
-	private Set<Store> stores = new HashSet<Store>(); 
+	@Column(name = "Medicalstore")
+	private String medicalstore;
 	
+//	@ManyToMany(mappedBy = "medicines")
+//	private Set<Store> stores = new HashSet<Store>(); 
+//	
+//	
+//	public Set<Store> getStores() {
+//		return stores;
+//	}
+//
+//	public void setStores(Set<Store> stores) {
+//		this.stores = stores;
+//	}
+
 	
-	public Set<Store> getStores() {
-		return stores;
+	public String getMedicalstore() {
+		return medicalstore;
 	}
 
-	public void setStores(Set<Store> stores) {
-		this.stores = stores;
+	public void setMedicalstore(String medicalstore) {
+		this.medicalstore = medicalstore;
 	}
 
-	
-	public Medicine(String name, String type, Integer stock) {
+	public Medicine(String name, String type, Integer stock, String medicalstore) {
 		this.name = name;
 		this.type = type;
 		this.stock = stock;
+		this.medicalstore = medicalstore;
 	}
 
 	public Medicine() {
@@ -66,7 +78,7 @@ public class Medicine {
 
 	public void setName(String name) {
 		this.name = name;
-	}
+	} 
 
 	public String getType() {
 		return type;

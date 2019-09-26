@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mobusher.dao.BloodBankRepo;
 import com.mobusher.model.BloodBank;
 import com.mobusher.model.Medicine;
+import com.mobusher.repo.BloodBankRepo;
 
 
 @Service
@@ -40,4 +40,5 @@ public class BloodBankService {
 	public void updateBB(BloodBank bb) {
 		bbRepo.save(bb);
 	}
+	
 }

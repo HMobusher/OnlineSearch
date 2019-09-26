@@ -6,16 +6,16 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mobusher.dao.MedicineRepo;
 import com.mobusher.model.Medicine;
+import com.mobusher.repo.MedicineRepo;
 
 
 @Service
 public class MedicineService {
 
 	@Autowired
-	MedicineRepo medRepo;
-	
+	private MedicineRepo medRepo;
+
 	public List<Medicine> retrieveAllMeds() {
 		medRepo.findAll().forEach(System.out::println);
 		return (List<Medicine>)medRepo.findAll();
@@ -23,6 +23,10 @@ public class MedicineService {
 
 	public Optional<Medicine> getMedById(int id) {
 		return medRepo.findById(id);
+	}
+	public List<Medicine> retrieveAllMedName() {
+		medRepo.findAll().forEach(System.out::println);
+		return (List<Medicine>)medRepo.findAll();
 	}
 	public Optional<Medicine> getMedByName(String name){
 		return medRepo.findByName(name);

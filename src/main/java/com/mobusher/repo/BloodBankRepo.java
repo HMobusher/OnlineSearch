@@ -1,4 +1,4 @@
-package com.mobusher.dao;
+package com.mobusher.repo;
 
 import java.util.Optional;
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mobusher.model.BloodBank;
 import com.mobusher.model.Medicine;
+import com.mobusher.model.Store;
 import com.mobusher.service.BloodBankService;
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -36,23 +37,28 @@ public class BloodBankController {
 		bbService.addBB(bb);
 	}
 	
-	@GetMapping("/getBBId/{id}")
-	public Optional<BloodBank> getBBById(@PathVariable Integer id) {
-		return bbService.getBBById(id);
+	@GetMapping("/getBBId/{bId}")
+	public Optional<BloodBank> getBBById(@PathVariable Integer bId) {
+		return bbService.getBBById(bId);
 	}
 	@GetMapping("/getBBType/{type}")
 	public Optional<BloodBank> getBBByType(@PathVariable String type){
 		return bbService.getBBByType(type);
 	}
 	
-	@DeleteMapping("/deleteBB/{id}")
-	public void deleteBBById(@PathVariable Integer id){
-		bbService.deleteBBById(id);
+	@DeleteMapping("/deleteBB/{bId}")
+	public void deleteBBById(@PathVariable Integer bId){
+		bbService.deleteBBById(bId);
 	}
 	
 	@PutMapping("/updateBB/{id}")
-	public void updateBB(@RequestBody BloodBank bb ,@PathVariable Integer id) {
-		bb.setId(id); 
+	public void updateBB(@RequestBody BloodBank bb ,@PathVariable Integer bId) {
+		bb.setbId(bId); 
 		bbService.updateBB(bb);
+	}
+	@PutMapping("/updateBB")
+	public BloodBank update(@RequestBody BloodBank bb) {
+		bbService.updateBB(bb);
+		return bb;
 	}
 }

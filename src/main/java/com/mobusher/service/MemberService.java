@@ -6,10 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
-import com.mobusher.dao.MemberRepo;
 import com.mobusher.model.Members;
+import com.mobusher.repo.MemberRepo;
 
 @Service
 public class MemberService {

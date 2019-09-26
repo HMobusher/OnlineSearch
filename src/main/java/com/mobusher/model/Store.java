@@ -1,8 +1,6 @@
 package com.mobusher.model;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -17,6 +15,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "Store")
 public class Store {
@@ -24,7 +26,7 @@ public class Store {
 	@Id
 	@GeneratedValue
 	@Column(name = "sId")
-	private Integer id;
+	private Integer sId;
 
 	@Column(name = "Name")
 	private String storename;
@@ -63,47 +65,50 @@ public class Store {
 	private String delivery;
 
 	
-	@OneToMany(mappedBy="stores",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	private Set<Members> members = new HashSet<Members>();
-	
-	//ID Relationship to Medicine
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Store_Medicine",
-	joinColumns = {	@JoinColumn(name = "sId")}, 
-				inverseJoinColumns= {@JoinColumn(name = "mId")})
-	private Set<Medicine> medicines = new HashSet<Medicine>();
-	
-	//ID Relationship to Blood Banks
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Store_Bloodbank",
-	joinColumns = {	@JoinColumn(name = "sId")}, 
-				inverseJoinColumns= {@JoinColumn(name = "bId")})
-	private Set<BloodBank> bloodbanks = new HashSet<BloodBank>();
-
-	
-	public Set<Members> getMembers() {
-		return members;
-	}
-
-	public void setMembers(Set<Members> members) {
-		this.members = members;
-	}
-
-	public Set<Medicine> getMedicines() {
-		return medicines;
-	}
-
-	public void setMedicines(Set<Medicine> medicines) {
-		this.medicines = medicines;
-	}
-
-	public Set<BloodBank> getBloodbanks() {
-		return bloodbanks;
-	}
-
-	public void setBloodbanks(Set<BloodBank> bloodbanks) {
-		this.bloodbanks = bloodbanks;
-	}
+//	@OneToMany(mappedBy="stores",fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+//	//@JsonManagedReference
+//	@JsonIgnore
+//	private Set<Members> members = new HashSet<Members>();
+//	
+//	//ID Relationship to Medicine
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "Store_Medicine",
+//	joinColumns = {	@JoinColumn(name = "sId")}, 
+//				inverseJoinColumns= {@JoinColumn(name = "mId")})
+//	private Set<Medicine> medicines = new HashSet<Medicine>();
+//	
+//	//ID Relationship to Blood Banks
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "Store_Bloodbank",
+//	joinColumns = {	@JoinColumn(name = "sId")}, 
+//				inverseJoinColumns= {@JoinColumn(name = "bId")})
+//	private Set<BloodBank> bloodbanks = new HashSet<BloodBank>();
+//
+//	
+//	public Set<Members> getMembers() {
+//		return members;
+//	}
+//
+//	public void setMembers(Set<Members> members) {
+//		this.members = members;
+//	}
+//
+//	
+//	public Set<Medicine> getMedicines() {
+//		return medicines;
+//	}
+//
+//	public void setMedicines(Set<Medicine> medicines) {
+//		this.medicines = medicines;
+//	}
+//
+//	public Set<BloodBank> getBloodbanks() {
+//		return bloodbanks;
+//	}
+//
+//	public void setBloodbanks(Set<BloodBank> bloodbanks) {
+//		this.bloodbanks = bloodbanks;
+//	}
 
 	public void setZipcode(Integer zipcode) {
 		this.zipcode = zipcode;
@@ -126,12 +131,12 @@ public class Store {
 	public Store() {
 	}
 	
-	public Integer getId() {
-		return id;
+	public Integer getsId() {
+		return sId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setsId(Integer sId) {
+		this.sId = sId;
 	}
 
 	public String getStorename() {

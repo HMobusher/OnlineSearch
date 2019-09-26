@@ -17,7 +17,7 @@ public class BloodBank {
 	@Id
 	@GeneratedValue
 	@Column(name = "bId")
-	private Integer id;
+	private Integer bId;
 	
 	//Positive: O, A, B, AB | Negative: O, A, B, AB 
 	@Column(name = "Bloodtype")
@@ -30,29 +30,42 @@ public class BloodBank {
 	@Column(name = "Units")
 	private Integer units;
 	
-	@ManyToMany(mappedBy = "bloodbanks")
-	private Set<Store> stores = new HashSet<Store>(); 
+	@Column(name = "Bloodbankname")
+	private String bloodbankname;
 	
-	public BloodBank(String type, String rhtype, Integer units) {
+	
+public String getBloodbankname() {
+		return bloodbankname;
+	}
+	public void setBloodbankname(String bloodbankname) {
+		this.bloodbankname = bloodbankname;
+	}
+	//	@ManyToMany(mappedBy = "bloodbanks")
+//	private Set<Store> stores = new HashSet<Store>(); 
+//	
+	public BloodBank(String type, String rhtype, Integer units, String bloodbankname) {
 		this.type = type;
 		this.rhtype = rhtype;
 		this.units = units;
+		this.bloodbankname = bloodbankname;
+	}
+	public BloodBank() {
 	}
 
-	public Set<Store> getStores() {
-		return stores;
+//	public Set<Store> getStores() {
+//		return stores;
+//	}
+//
+//	public void setStores(Set<Store> stores) {
+//		this.stores = stores;
+//	}
+
+	public Integer getbId() {
+		return bId;
 	}
 
-	public void setStores(Set<Store> stores) {
-		this.stores = stores;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
+	public void setbId(Integer bId) {
+		this.bId = bId;
 	}
 
 	public String getType() {

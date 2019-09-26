@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mobusher.model.Medicine;
 import com.mobusher.model.Store;
 import com.mobusher.service.StoreService;
 
@@ -26,7 +27,7 @@ public class StoreController {
 	@Autowired
 	StoreService storeService;
 	
-	@GetMapping("/getAllStores")
+	@GetMapping("/getStores")
 	public List<Store> getAllStores(){
 		return storeService.retrieveAllStores();
 	}
@@ -36,20 +37,25 @@ public class StoreController {
 		storeService.addStore(store);
 	}
 	
-	@GetMapping("/getStoreId/{id}")
-	public Optional<Store> getStoreById(@PathVariable Integer id) {
-		return storeService.getStoreById(id);
+	@GetMapping("/getStoreId/{sId}")
+	public Optional<Store> getStoreById(@PathVariable Integer sId) {
+		return storeService.getStoreById(sId);
 	}
 	
-	@DeleteMapping("/deleteStore/{id}")
-	public void deleteStoreById(@PathVariable Integer id){
-		storeService.deleteStoreById(id);
+	@DeleteMapping("/deleteStore/{sId}")
+	public void deleteStoreById(@PathVariable Integer sId){
+		storeService.deleteStoreById(sId);
 	}
 	
-	@PutMapping("/updateStore/{id}")
-	public void updateStore(@RequestBody Store store ,@PathVariable Integer id) {
-		store.setId(id); 
+	@PutMapping("/updateStore/{sId}")
+	public void updateStore(@RequestBody Store store ,@PathVariable Integer sId) {
+		store.setsId(sId); 
 		storeService.updateStore(store);
+	}
+	@PutMapping("/updateStore")
+	public Store update(@RequestBody Store store) {
+		storeService.updateStore(store);
+		return store;
 	}
 	
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mobusher.model.BloodBank;
 import com.mobusher.model.Members;
 import com.mobusher.service.MemberService;
 
@@ -35,6 +36,8 @@ public class MemberController {
 		userService.addMember(user);
 	}
 	
+	
+	
 	@GetMapping("/getMember/{id}")
 	public Optional<Members> getMemberById(@PathVariable Integer id) {
 		return userService.getMemberById(id);
@@ -45,10 +48,15 @@ public class MemberController {
 		userService.deleteMemberById(id);
 	}
 	
-	@PutMapping("/updateMember/{id}")
-	public void updateMember(@RequestBody Members user ,@PathVariable Integer id) {
-		user.setId(id); 
+//	@PutMapping("/updateMember/{id}")
+//	public void updateMember(@RequestBody Members user ,@PathVariable Integer id) {
+//		user.setId(id); 
+//		userService.updateMember(user);
+//	}
+	@PutMapping("/updateMember")
+	public Members update(@RequestBody Members user) {
 		userService.updateMember(user);
+		return user;
 	}
 }
 	
